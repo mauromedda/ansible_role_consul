@@ -129,7 +129,7 @@ Example Playbook
   connection: local
   become: true
   roles:
-    - { role: ansible_role_consul, consul_bind_addr: "{{ ansible_eth1.ipv4.address }}" }
+    - { role: ansible_role_consul, consul_bind_addr: ansible_eth1.ipv4.address }
 
 ```
 
