@@ -1,0 +1,80 @@
+---
+# tasks file for ansible_role_consul
+
+- name: "Consul | Create a version specific directory"
+  file:
+    path: '{{ consul_install_path }}/{{ consul_version }}'
+    state: directory
+    mode: 0755
+  tags:
+    - install
+    - create_dir
+
+- name: "Consul | Check if consul_install_path exists"
+  stat:
+    path: '{{ consul_install_path }}/{{ consul_version }}'
+  check_mode: false
+  register: consul_install_path_st
+
+- name: "Consul | Unarchive Consul"
+  unarchive:
+    remote_src: true
+    src: '{{ consul_repo_url }}'
+    dest: '{{ consul_install_path }}/{{ consul_version}}'
+    creates: '{{ consul_install_path }}/{{ consul_version}}/consul'
+    mode: 0555
+  when: consul_install_path_st.stat.exists and consul_install_path_st.stat.isdir
+  register: consul_unarchive
+  tags:
+    - install
+    - download
+    - unarchive
+
+- name: "Consul | Link the current consul version"
+  file:
+    src: '{{ consul_install_path }}/{{ consul_version}}/consul'
+    dest: '{{ consul_bin }}'
+    state: link
+  when: consul_unarchive.changed == True
+  tags:
+    - install
+    - link
+
+- name: "Consul | Clean-up installation files"
+  file:
+    path: '{{ consul_archive }}'
+    state: absent
+  when: consul_cleanup
+  tags:
+    - install
+    - cleanup
+
+- name: "Consul | Create {{ consul_group }} group"
+  group:
+    name: "{{ consul_group }}"
+    state: present
+  tags:
+    - install
+    - add_user
+
+- name: "Consul | Create {{ consul_user }} user"
+  user:
+    name: "{{ consul_user }}"
+    group: "{{ consul_group }}"
+    state: present
+  tags:
+    - install
+    - add_user
+
+- name: "Consul | Create data and configuration directory"
+  file:
+    state: directory
+    path: "{{ item }}"
+    owner: "{{ consul_user }}"
+    group: "{{ consul_group }}"
+  with_items:
+     - "{{ consul_data_dir }}"
+     - "{{ consul_conf_dir }}"
+  tags:
+    - install
+    - add_dirs

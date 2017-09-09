@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Mauro Medda
+  description: Ansible role that installs Hashicorp Consul
+  company: mauromedda
+
+  license: BSD
+
+  min_ansible_version: 2.2
+
+  platforms:
+  - name: EL
+    versions:
+    - 7
+
+  galaxy_tags: [ "CentOS", "RedHat", "Consul", "consul", "galaxy" ]
+
+  dependencies: []

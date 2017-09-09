@@ -1,0 +1,9 @@
+---
+# tasks file for ansible_role_consul
+
+- name: "PRELIM | Check the current consul version"
+  stat:
+    path: '/etc/consul_{{ consul_version }}'
+  register: consul_current
+  changed_when: false
+  check_mode: no

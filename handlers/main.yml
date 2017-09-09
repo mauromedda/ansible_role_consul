@@ -1,0 +1,7 @@
+---
+# handlers file for ansible_role_consul
+
+- name: "restart consul service"
+  service:
+    name: "consul"
+    state: restarted

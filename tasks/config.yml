@@ -1,0 +1,25 @@
+---
+# tasks file for ansible_role_consul
+
+
+- name: "Consul | Setting systemd service"
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - {
+        src: "templates/agent.json.j2",
+        dest: "/etc/consul.d/agent.json"
+      }
+    - {
+        src: "templates/consul.service.j2",
+        dest: "/etc/systemd/system/consul.service"
+      }
+  notify: "restart consul service"
+
+- name: "Consul | Enabling service"
+  service:
+    name: consul
+    enabled: yes
+  notify: "restart consul service"
+
