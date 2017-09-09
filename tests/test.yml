@@ -4,4 +4,4 @@
   connection: local
   become: true
   roles:
-    - { role: ansible_role_consul, consul_bind_addr: "{{ ansible_eth1.ipv4.address }}" }
+    - { role: role_under_test, consul_bind_addr: ansible_eth1.ipv4.address }
