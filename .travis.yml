@@ -6,7 +6,7 @@ env:
   - distro: centos7
 
 before_install:
-  - apt-get install -y make
+  - sudo apt-get install -y make
 
 script:
   - container_id=$(mktemp)
