@@ -6,7 +6,7 @@ env:
   - distro: centos7
 
 before_install:
-  - sudo yum install -y make
+  - apt-get install -y make
 
 script:
   - container_id=$(mktemp)
@@ -16,7 +16,7 @@ script:
   - cd ${PWD}
 
   # Run tests.
-  - make
+  - CONTAINER_ID=${container_id} make
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
