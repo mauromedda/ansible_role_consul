@@ -9,7 +9,7 @@ before_install:
   - sudo apt-get install -y make
 
 script:
-  - container_id=$(mktemp)
+  - container_id=$(date +%s)
   # Download test shim.
   #- wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
   - wget -O ${PWD}/Makefile https://raw.githubusercontent.com/mauromedda/ansible-centos7-ci/master/tests/Makefile
