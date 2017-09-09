@@ -39,6 +39,7 @@
   tags:
     - install
     - link
+    - skip_ansible_lint
 
 - name: "Consul | Clean-up installation files"
   file:
