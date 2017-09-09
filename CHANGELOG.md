@@ -15,3 +15,6 @@
 ## v1.0.3
 
 - Change Travis-CI pipeline to use Makefile and my ansible-centos7-ci image from Docker Hub
+
+## v1.0.4
+- Update the Makefile
