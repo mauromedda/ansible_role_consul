@@ -7,3 +7,9 @@
   register: consul_current
   changed_when: false
   check_mode: no
+
+- name: "PRELIM | Ensure that requirements are satisfied"
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - "{{ consul_requirements }}"

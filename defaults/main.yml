@@ -19,3 +19,6 @@ consul_cleanup: true
 consul_cluster:
   servers: [ "{{ consul_bind_addr }}" ]
   clients: []
+
+consul_requirements:
+  - unzip
