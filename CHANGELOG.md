@@ -7,3 +7,7 @@
 ## v1.0.1
 
 - Add Makefile for manual tests
+
+## v1.0.2
+
+- Fix CI issues
