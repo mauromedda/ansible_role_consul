@@ -143,4 +143,4 @@ Author Information
 
 Mauro Medda aka deftunix < medda.mauro at gmail dot com >
 
-Inspired to the work of [Brian Shumate](https://galaxy.ansible.com/brianshumate/consul/)
+Inspired by the work of [Brian Shumate](https://galaxy.ansible.com/brianshumate/consul/)
