@@ -4,4 +4,5 @@
   connection: local
   become: true
   roles:
+    - { role: mauromedda.ansible_role_unzip }
     - { role: role_under_test, consul_bind_addr: ansible_eth1.ipv4.address }
