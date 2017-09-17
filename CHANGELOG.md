@@ -18,3 +18,6 @@
 
 ## v1.0.4
 - Update the Makefile
+
+## 1.2
+- Fix meta-data format

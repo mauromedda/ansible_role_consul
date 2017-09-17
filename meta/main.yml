@@ -14,5 +14,5 @@ galaxy_info:
 
   galaxy_tags: [ "CentOS", "RedHat", "Consul", "consul", "galaxy" ]
 
-  dependencies:
-    - mauromedda.ansible_role_unzip
+dependencies:
+  - mauromedda.ansible_role_unzip
