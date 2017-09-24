@@ -16,10 +16,17 @@
         dest: "/etc/systemd/system/consul.service"
       }
   notify: "restart consul service"
+  tags:
+    - install
+    - config
+    - consul
 
 - name: "Consul | Enabling service"
   service:
     name: consul
     enabled: yes
   notify: "restart consul service"
-
+  tags:
+    - install
+    - config
+    - consul

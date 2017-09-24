@@ -7,3 +7,7 @@
   register: consul_current
   changed_when: false
   check_mode: no
+  tags:
+    - install
+    - consul
+    - prelim
